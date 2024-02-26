@@ -12,7 +12,7 @@ function GenerateFooterPages() {
         ~
         <a href="Reserva de sesiones.html">Reserva de sesiones</a>
     </span>
-    <span>
+    <span id="spanSocialMedia">
         <a href="#"><img src="../Images/Instagram_logo.png" alt="" class="footerLogo"></a>
         <a href="#"><img src="../Images/logo-facebook.webp" alt="" class="footerLogo"
                 style="background-color: white;"></a>
