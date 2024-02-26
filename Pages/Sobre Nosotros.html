@@ -1,30 +1,84 @@
 <!DOCTYPE html>
-<html lang="en">
-
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Camvi- Sobre Nosotros</title>
-    <link rel="shortcut icon" href="../Images/Camvi_Logo.jpeg" type="image/x-icon">
-    <link rel="stylesheet" href="../Bootstrap/css/bootstrap.min.css">
-    <link rel="stylesheet" href="../Css/Style.css  ">
-    <script src="../JavaScript/HeaderPages.js"></script>
-    <script src="../JavaScript/FooterPages.js"></script>
+    <title>CAMVI (Sobre Nosotros)</title>
+    <link rel="stylesheet" href="/Css/bootstrap.min.css">
+    <link rel="stylesheet" href="/Css/all.min.css">
+    <link rel="stylesheet" href="/Css/templatemo-style.css">
+    <style>
+        body {
+            padding: 10px;
+        }
+    </style>
 </head>
-
 <body>
-
-    <header id="Header"><!--Este Id solo servirá para que JavaScript Ubique el elemento e inserte el código-->
-
-    </header>
-
-    <footer id="Footer"><!--Este Id solo servirá para que JavaScript Ubique el elemento e inserte el código-->
-        
+    
+    <footer class="tm-bg-gray pt-5 pb-3 tm-text-gray tm-footer">
+        <div class="container-fluid tm-container-small">
+            <div class="row">
+                <div class="col-lg-6 col-md-12 col-12 px-5 mb-5">
+                    <h3 class="tm-text-primary mb-4 tm-footer-title">Objetivos de Camvi</h3>
+                    <p>1. Proporcionar servicios de fotografía de alta calidad</p>
+                    <p>2. Satisfacer las necesidades y deseos de los clientes</p>
+                    <p>3. Crear experiencias memorables</p>
+                    <p>4. Mantener una excelente reputación y satisfacción del cliente</p>
+                    <p>5. Promover la creatividad y la innovación</p>
+                    <img src="https://elcomercio.pe/resizer/4D6R82N2aMzVIKhR3cAn975yuGQ=/1200x800/smart/filters:format(jpeg):quality(75)/cloudfront-us-east-1.images.arcpublishing.com/elcomercio/ICHXD7PQARGKFGDZC4CBOD4YI4.jpg" class="img-fluid" width="250px">
+                </div>
+                <div class="col-lg-3 col-md-6 col-sm-6 col-12 px-5 mb-5">
+                    <h3 class="tm-text-primary mb-4 tm-footer-title">Nuestros Enlaces</h3>
+                    <ul class="tm-footer-links pl-0">
+                        <li><a href="#">Publicidad</a></li>
+                        <li><a href="#">Soporte</a></li>
+                        <li><a href="#">Nuestra Empresa</a></li>
+                        <li><a href="#">Contacto</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-3 col-md-6 col-sm-6 col-12 px-5 mb-5">
+                    <ul class="tm-social-links d-flex justify-content-end pl-0 mb-5">
+                        <li class="mb-2"><a href="https://facebook.com" target="_blank">Facebook</a></li>
+                        <li class="mb-2"><a href="https://twitter.com" target="_blank">Twitter</a></li>
+                        <li class="mb-2"><a href="https://instagram.com" target="_blank">Instagram</a></li>
+                        <li class="mb-2"><a href="https://pinterest.com" target="_blank">Pinterest</a></li>
+                    </ul>
+                    <a href="#" class="tm-text-gray text-right d-block mb-2">Términos de Uso</a>
+                    <a href="#" class="tm-text-gray text-right d-block">Política de Privacidad</a>
+                </div>
+            </div>
+        </div>
     </footer>
 
-    <script src="../Bootstrap/js/bootstrap.min.js"></script>
-    <script src="../JavaScript/CargarNavPages.js"></script>
-    <script src="../JavaScript/CargarFooterPages.js"></script>
-</body>
-
-</html>
+    <script src="/JavaScript/plugins.js"></script>
+    <script>
+        window.addEventListener("load", function() {
+            document.body.classList.add('loaded');
+        });
+    </script>
+    <div class="container">
+        <div style="height: 100px;"></div>
+        <h2 style="text-align: center;">Formulario de consultas</h2>
+        <form class="mt-5" onsubmit="enviarCorreo(event)">
+            <div class="form-group">
+                <label for="nombre">Nombre:</label>
+                <input type="text" class="form-control" id="nombre" required>
+            </div>
+            <div class="form-group">
+                <label for="email">Email:</label>
+                <input type="email" class="form-control" id="email" required>
+            </div>
+            <div class="form-group">
+                <label for="mensaje">Mensaje:</label>
+                <textarea class="form-control" id="mensaje" rows="5" required></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary">Enviar</button>
+        </form>
+    </div>
+    <script>
+        function enviarCorreo(event) {
+            event.preventDefault();
+            
+            var nombre = document.getElementById("nombre").value;
+            var email = document.getElementById("email").value;
+            var mensaje = document.getElementById("mensaje").value;
