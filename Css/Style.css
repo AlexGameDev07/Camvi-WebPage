@@ -39,3 +39,9 @@ footer a {
     color: aliceblue;
     text-decoration: none;
 }
+
+#spanSocialMedia{
+    display: flex;
+    flex-direction: row;
+    
+}
