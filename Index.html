@@ -2,29 +2,171 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Camvi</title>
-    <link rel="shortcut icon" href="Images/Camvi_Logo.jpeg" type="image/x-icon">
-    <link rel="stylesheet" href="Bootstrap/css/bootstrap.min.css">
-    <link rel="stylesheet" href="Css/Style.css  ">
-    <script src="JavaScript/HeaderIndex.js"></script>
-    <script src="JavaScript/FooterIndex.js"></script>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Camvi</title>
+   <link rel="shortcut icon" href="Images/Camvi_Logo.jpeg" type="image/x-icon">
+   <link rel="stylesheet" href="Bootstrap/css/bootstrap.min.css">
+   <link rel="stylesheet" href="Css/Style.css">
+   <link rel="stylesheet" href="https://demos.creative-tim.com/notus-js/assets/styles/tailwind.css">
+   <link rel="stylesheet" href="https://demos.creative-tim.com/notus-js/assets/vendor/@fortawesome/fontawesome-free/css/all.min.css">
+   <script src="https://unpkg.com/flowbite@1.4.0/dist/flowbite.js"></script>
+   <script src="https://unpkg.com/tailwindcss-jit-cdn"></script>
+   <script src="JavaScript/HeaderIndex.js"></script>
+   <script src="JavaScript/FooterIndex.js"></script>
 </head>
 
 <body>
-    <header id="Header"><!--Este Id solo servirá para que JavaScript Ubique el elemento e inserte el código-->
+   <header id="Header"><!--Este Id solo servirá para que JavaScript Ubique el elemento e inserte el código-->
 
-    </header>
+   </header>
+
+   <div class="header_section"> <!--Este código es para el menú de navegación-->
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+         <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+               <a class="nav-link" href="index.html">Inicio</a>
+            </li>
+            <li class="nav-item">
+               <a class="nav-link" href="Pages/Catálogo.html">Catálogo</a>
+            </li>
+            <li class="nav-item">
+               <a class="nav-link" href="Pages/Reserva de sesiones.html">Reserva de Sesiones</a>
+            </li>
+            <li class="nav-item">
+               <a class="nav-link" href="Pages/Sobre Nosotros.html">Sobre Nosotros</a>
+            </li>
+         </ul>
+      </div>
+      </nav>
+   </div>
+   <!--Header section end-->
+
+   <div class="header_section"> <!--Este código es para el menú de navegación-->
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+         <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+               <a class="nav-link" href="index.html">Inicio</a>
+            </li>
+            <li class="nav-item">
+               <a class="nav-link" href="Pages/Catálogo.html">Catálogo</a>
+            </li>
+            <li class="nav-item">
+               <a class="nav-link" href="Pages/Reserva de sesiones.html">Reserva de Sesiones</a>
+            </li>
+            <li class="nav-item">
+               <a class="nav-link" href="Pages/Sobre Nosotros.html">Sobre Nosotros</a>
+            </li>
+         </ul>
+      </div>
+      </nav>
+   </div>
+   <!--Header section end-->
+
+   <!--Video de fondo-->
+   <section id="MainVideo" class="relative  bg-blueGray-50">
+      <div class="relative pt-16 pb-32 flex content-center items-center justify-center min-h-screen-75">
+         <div class="absolute top-0 w-full h-full bg-center bg-cover"
+            style="background-image: url('https://i.pinimg.com/originals/59/55/ad/5955ad19c9962c4cb7b51deb06004993.gif')">
+
+            <!--Opacidad del video-->
+            <span id="blackOverlay" class="w-full h-full absolute opacity-75 bg-black"></span>
+         </div>
+         <div class="container relative mx-auto">
+            <div class="items-center flex flex-wrap">
+               <div class="w-full lg:w-6/12 px-4 ml-auto mr-auto text-center">
+                  <div class="pr-12">
+                     <img src="Images/Logo_Camvi.png" class="img-fluid" width="500px">
+                     <h1 class="text-white font-semibold text-5xl">
+                        Bienvenido a CAMVI
+                     </h1>
+                     <p class="mt-4 text-lg text-blueGray-200">
+                        Sesiones de foto para cualquier tipo de ocasión
+                     </p>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+   </section>
 
 
-    <footer id="Footer"><!--Este Id solo servirá para que JavaScript Ubique el elemento e inserte el código-->
-        
-    </footer>
+   <!--Descripción de lo que hace la empresa CAMVI-->
+   <section id="CompanyDescription" class="section-padding mb-6 mt-6">
+      <div class="container">
+         <div class="row mt-3">
+            <div class="col-12 text-center">
+               <div class="section-title">
+                  <h1 class="display-4 fw-semibold">Sobre CAMVI</h1>
+                  <hr>
+                  <br>
+                  <p>Organiza sesiones fotográficas en las que te sientas cómodo y natural. Esto permitirá que tus
+                     personalidades brillen, recreando momentos únicos.
+                     <br><br>
+                     <span class="text-uppercase"><strong>"Deja que tu sonrisa haga clic"</strong></span></b>
+                  </p>
+               </div>
+            </div>
+            <span style="display: flex; flex-direction: row; justify-content: center; align-items: center; width: 100%; margin-top: 20px;">
+               <a href="Pages/Catálogo.html"><button
+                       class="middle none center rounded-lg bg-yellow-500 py-3 px-6 font-sans text-xs font-bold uppercase text-white shadow-md shadow-yellow-500/20 transition-all hover:shadow-lg hover:shadow-yellow-500/40 focus:opacity-[0.85] focus:shadow-none active:opacity-[0.85] active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
+                       style="display: flex; justify-content: center;">Ver Catálogo</button>
+               </a>
+            </span>
+         </div>
+   </section>
 
-    <script src="Bootstrap/js/bootstrap.min.js"></script>
-    <script src="JavaScript/CargarNavIndex.js"></script>
-    <script src="JavaScript/CargarFooterIndex.js"></script>
+   <div class="max-w-2xl mx-auto">
+
+	<div id="default-carousel" class="relative" data-carousel="static">
+        <!-- Carousel wrapper -->
+        <div class="overflow-hidden relative h-56 rounded-lg sm:h-64 xl:h-80 2xl:h-96">
+            <!-- Item 1 -->
+            <div class="hidden duration-700 ease-in-out" data-carousel-item>
+                <span class="absolute top-1/2 left-1/2 text-2xl font-semibold text-white -translate-x-1/2 -translate-y-1/2 sm:text-3xl dark:text-gray-800">First Slide</span>
+                <img src="Images/F1.jpg" class="block absolute top-1/2 left-1/2 w-full -translate-x-1/2 -translate-y-1/2" alt="...">
+            </div>
+            <!-- Item 2 -->
+            <div class="hidden duration-700 ease-in-out" data-carousel-item>
+                <img src="Images/F2.jpg" class="block absolute top-1/2 left-1/2 w-full -translate-x-1/2 -translate-y-1/2" alt="...">
+            </div>
+            <!-- Item 3 -->
+            <div class="hidden duration-700 ease-in-out" data-carousel-item>
+                <img src="Images/F3.jpg" class="block absolute top-1/2 left-1/2 w-full -translate-x-1/2 -translate-y-1/2" alt="...">
+            </div>
+        </div>
+        <!-- Slider indicators -->
+        <div class="flex absolute bottom-5 left-1/2 z-30 space-x-3 -translate-x-1/2">
+            <button type="button" class="w-3 h-3 rounded-full" aria-current="false" aria-label="Slide 1" data-carousel-slide-to="0"></button>
+            <button type="button" class="w-3 h-3 rounded-full" aria-current="false" aria-label="Slide 2" data-carousel-slide-to="1"></button>
+            <button type="button" class="w-3 h-3 rounded-full" aria-current="false" aria-label="Slide 3" data-carousel-slide-to="2"></button>
+        </div>
+        <!-- Slider controls -->
+        <button type="button" class="flex absolute top-0 left-0 z-30 justify-center items-center px-4 h-full cursor-pointer group focus:outline-none" data-carousel-prev>
+            <span class="inline-flex justify-center items-center w-8 h-8 rounded-full sm:w-10 sm:h-10 bg-white/30 dark:bg-gray-800/30 group-hover:bg-white/50 dark:group-hover:bg-gray-800/60 group-focus:ring-4 group-focus:ring-white dark:group-focus:ring-gray-800/70 group-focus:outline-none">
+                <svg class="w-5 h-5 text-white sm:w-6 sm:h-6 dark:text-gray-800" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path></svg>
+                <span class="hidden">Previous</span>
+            </span>
+        </button>
+        <button type="button" class="flex absolute top-0 right-0 z-30 justify-center items-center px-4 h-full cursor-pointer group focus:outline-none" data-carousel-next>
+            <span class="inline-flex justify-center items-center w-8 h-8 rounded-full sm:w-10 sm:h-10 bg-white/30 dark:bg-gray-800/30 group-hover:bg-white/50 dark:group-hover:bg-gray-800/60 group-focus:ring-4 group-focus:ring-white dark:group-focus:ring-gray-800/70 group-focus:outline-none">
+                <svg class="w-5 h-5 text-white sm:w-6 sm:h-6 dark:text-gray-800" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+                <span class="hidden">Next</span>
+            </span>
+        </button>
+    </div>
+   </div>
+   <br>
+   <br>
+   
+
+   <footer id="Footer"><!--Este Id solo servirá para que JavaScript Ubique el elemento e inserte el código-->
+
+   </footer>
+
+   <script src="Bootstrap/js/bootstrap.min.js"></script>
+   <script src="JavaScript/CargarNavIndex.js"></script>
+   <script src="JavaScript/CargarFooterIndex.js"></script>
 </body>
 
 </html>
