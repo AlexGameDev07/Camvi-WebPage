@@ -18,7 +18,83 @@
 
     </header>
 
-
+    <section class="contenido">
+        <div class="catalogo" id="mostrador">
+            <div class="fila">
+                <div class="item" onclick="cargar(this)">
+                    <div class="catalogo-img">
+                        <img src=".//Downloads/pareja-de-boda (3).png" alt="">
+                    </div>
+                    <p class="name">Boda</p>
+                    <span class="desc">Descripción  </span>
+                </div>
+                <div class="item" onclick="cargar(this)">
+                    <div class="catalogo-img">
+                        <img src=".//Downloads/tiempo-de-fiesta.png" alt="">
+                    </div>
+                    <p class="name" id>15 años</p>
+                    <span class="desc">Descripción</span>
+                </div>
+                <div class="item" onclick="cargar(this)">
+                    <div class="catalogo-img">
+                        <img src="img/3.png" alt="">
+                    </div>
+                    <p class="name">Fiestas
+                    </p>
+                    <span class="desc">Descripción</span>
+                </div>
+                <div class="item" onclick="cargar(this)">
+                    <div class="catalogo-img">
+                        <img src="img/4.png" alt="">
+                    </div>
+                    <p class="name">Fiestas infantiles</p>
+                    <span class="desc">Descripción</span>
+                </div>
+            </div>
+            <div class="fila">
+                <div class="item" onclick="cargar(this)">
+                    <div class="catalogo-img">
+                        <img src="img/5.png" alt="">
+                    </div>
+                    <p class="name">Velorios</p>
+                    <span class="desc">Descripción</span>
+                </div>
+                <div class="item" onclick="cargar(this)">
+                    <div class="catalogo-img">
+                        <img src="img/6.png" alt="">
+                    </div>
+                    <p class="name">Eventos privados</p>
+                    <span class="desc">Descripción</span>
+                </div>
+                <div class="item" onclick="cargar(this)">
+                    <div class="catalogo-img">
+                        <img src="img/7.png" alt="">
+                    </div>
+                    <p class="name">Eventos publicos</p>
+                    <span class="desc">Descripción</span>
+                </div>
+                <div class="item" onclick="cargar(this)">
+                    <div class="catalogo-img">
+                        <img src="img/8.png" alt="">
+                    </div>
+                    <p class="name">Cumpleaños</p>
+                    <span class="desc">Descripción</span>
+                </div>
+            </div> 
+        </div>
+        <!-- CONTENEDOR DEL ITEM SELECCIONADO -->
+        <div class="seleccion" id="seleccion">
+            <div class="cerrar" onclick="cerrar()">
+                &#x2715
+            </div>
+            <div class="info">
+                <img src="img/1.png" alt="" id="img">
+                <h2 id="modelo">Evento</h2>
+                <p id="name">Descripción</p>
+                </div>
+            </div>
+        </div>
+    </section>
 
     
     <footer id="Footer"><!--Este Id solo servirá para que JavaScript Ubique el elemento e inserte el código-->
