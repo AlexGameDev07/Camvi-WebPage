@@ -12,210 +12,166 @@
     <script src="../JavaScript/FooterPages.js"></script>
 </head>
 <style>
-    *{
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: 'Open Sans';
-}
-.contenido{
-    max-width: 1200px;
-    width: 100%;
-    margin: 40px auto;
-    display: flex;
-}
-.catalogo{
-    width: 100%;
-    transition: .5s ease;
-}
-.catalogo .fila{
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
-    margin-bottom: 40px;
+  .fila {
+margin: 35px;
+padding: 10px;
+display: flex;   
+flex-wrap: wrap;
+justify-content: space-between;
 }
 
-.catalogo .fila .item{
-    max-width: 210px;
-    padding: 30px;
-    height: 250px;
-    border: 2px solid rgb(14, 13, 13);
-    text-align: center;
-    margin: 0 10px;
-    cursor: pointer;
-    border-radius: 5px;
-    transition: .3s;
-}
-.catalogo .fila .item:hover{
-    background-color: #111111;
-}
-.catalogo .fila .item img{
-    width: 100%;
-    margin: 30px 0;
-}
-.catalogo .fila .item .name{
-    color: #707070;
-    font-weight: bold;
-}
-.catalogo .fila .item .desc{
-    color: #ffee00d8;
-    font-weight: bold;
-    font-size: 20px;
-}
-.seleccion{
-    transition: .5s ease;
-    opacity: 0;
-    width: 0%;
-    border: 1px solid #ccc;
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    overflow: hidden;
-}
-.cerrar{
-    position: absolute;
-    right: 0;
-    top: 20px;
-    right: 20px;
-    cursor: pointer;
+.image-box {
+  text-align: center;
+  margin: 50px;
 }
 
-.info{
-    padding: 20px;
+.image-box img {
+  width: 250px;
+  height: 250px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  margin-bottom: 10px;
 }
-.info img{
-    display: block;
-    margin: 30px auto;
-    width: 80%;
+
+.rating-container {
+  display: flex;
+  justify-content: center;
 }
-.info h2{
-    color: #707070;
-    margin-bottom: 10px;
+
+.star {
+  width: 30px;
+  height: 30px;
+  background-color: transparent;
+  background-image: url('https://cdn-icons-png.flaticon.com/512/13/13595.png'); /* Replace with your star image */
+  background-size: cover;
+  cursor: pointer;
+  margin: 0 5px;
+  transition: background-image 0.3s ease-in-out;
 }
-.info p{
-    font-size: 14px;
-    color: #707070;
-    margin-bottom: 10px;
+
+.star:hover,
+.star.active {
+  background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ-9ERd5iagj8f2LhTwQn9AbumVo2xhHWJvyiTShhDjQSRjBnAZY8Q0FfieqpdCfa_j6J8&usqp=CAU   '); /* Replace with your filled star image */
 }
-.info .desc{
-    font-size: 30px;
-    font-weight: bold;
-    color: #f85151;
-    margin-bottom: 10px;
-    display: block;
-}
-.info .fila{
-    display: flex;
-    align-items: flex-end;
-}
-.info .fila label{
-    display: block;
-    margin-bottom: 10px;
-}
-.info .fila select{
-    width: 100px;
-    font-size: 18px;
-    padding: 6px;
-    margin-right: 30px;
-}
-.info .fila button{
-    height: 40px;
-    border: none;
-    padding: 0 10px;
-    color: #fff;
-    background-color: #f85151;
-}
+
 </style>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+  const imageBoxes = document.querySelectorAll('.image-box');
+
+  imageBoxes.forEach((box) => {
+    const ratingContainer = box.querySelector('.rating-container');
+    const stars = [];
+
+    for (let i = 1; i <= 5; i++) {
+      const star = document.createElement('div');
+      star.className = 'star';
+      star.dataset.rating = i;
+      ratingContainer.appendChild(star);
+      stars.push(star);
+
+      star.addEventListener('mouseover', function () {
+        highlightStars(Number(star.dataset.rating), stars);
+      });
+
+      star.addEventListener('mouseout', function () {
+        resetStars(stars);
+      });
+
+      star.addEventListener('click', function () {
+        setRating(Number(star.dataset.rating), box);
+      });
+    }
+  });
+
+  function highlightStars(rating, stars) {
+    stars.forEach((star, index) => {
+      if (index < rating) {
+        star.classList.add('active');
+      } else {
+        star.classList.remove('active');
+      }
+    });
+  }
+
+  function resetStars(stars) {
+    stars.forEach((star) => {
+      star.classList.remove('active');
+    });
+  }
+
+  function setRating(rating, box) {
+    const ratingContainer = box.querySelector('.rating-container');
+    ratingContainer.dataset.rating = rating;
+
+    // Realizar la acción necesaria cuando se establece una calificación
+    console.log(`Imagen ${box.id} calificada con ${rating} estrellas`);
+    // Puedes realizar acciones adicionales aquí, como enviar la calificación al servidor.
+  }
+});
+
+    
+    
+</script>
 <body>
     <header id="Header"><!--Este Id solo servirá para que JavaScript Ubique el elemento e inserte el código-->
         
 
     </header>
-
-    <section class="contenido">
-        <div class="catalogo" id="mostrador">
-            <div class="fila">
-                <div class="item" onclick="cargar(this)">
-                    <div class="catalogo-img">
-                        <img src="../Images/boda_img.jpg" alt="">
-                    </div>
-                    <p class="name">Boda</p>
-                    <span class="desc">Descripción  </span>
-                </div>
-                <div class="item" onclick="cargar(this)">
-                    <div class="catalogo-img">
-                        <img src="..//Images/15_img.jpg" alt="">
-                    </div>
-                    <p class="name" id>15 años</p>
-                    <span class="desc">Descripción</span>
-                </div>
-                <div class="item" onclick="cargar(this)">
-                    <div class="catalogo-img">
-                        <img src="..//Images/fiesta_img.jpg" alt="">
-                    </div>
-                    <p class="name">Fiestas
-                    </p>
-                    <span class="desc">Descripción</span>
-                </div>
-                <div class="item" onclick="cargar(this)">
-                    <div class="catalogo-img">
-                        <img src="..//Images/fiestaInfantil_img.jpg" alt="">
-                    </div>
-                    <p class="name">Fiestas infantiles</p>
-                    <span class="desc">Descripción</span>
-                </div>
-            </div>
-            <div class="fila">
-                <div class="item" onclick="cargar(this)">
-                    <div class="catalogo-img">
-                        <img src="..//Images/velorio_img.webp" alt="">
-                    </div>
-                    <p class="name">Velorios</p>
-                    <span class="desc">Descripción</span>
-                </div>
-                <div class="item" onclick="cargar(this)">
-                    <div class="catalogo-img">
-                        <img src="..//Images/fiestas-privadas_img.png" alt="">
-                    </div>
-                    <p class="name">Eventos privados</p>
-                    <span class="desc">Descripción</span>
-                </div>
-                <div class="item" onclick="cargar(this)">
-                    <div class="catalogo-img">
-                        <img src="..//Images/eventosPublicos_img.jpg" alt="">
-                    </div>
-                    <p class="name">Eventos publicos</p>
-                    <span class="desc">Descripción</span>
-                </div>
-                <div class="item" onclick="cargar(this)">
-                    <div class="catalogo-img">
-                        <img src="..//Images/cupleaños_img.jpg" alt="">
-                    </div>
-                    <p class="name">Cumpleaños</p>
-                    <span class="desc">Descripción</span>
-                </div>
-            </div> 
-        </div>
-        <!-- CONTENEDOR DEL ITEM SELECCIONADO -->
-        <div class="seleccion" id="seleccion">
-            <div class="cerrar" onclick="cerrar()">
-                &#x2715
-            </div>
-            <div class="info">
-                <img src="img/1.png" alt="" id="img">
-                <h2 id="modelo">Evento</h2>
-                <p id="name">Descripción</p>
-                </div>
-            </div>
-        </div>
-    </section>
+<div class="fila">
+    <div class="image-box" id="image-box-1">
+        <img src="https://i.pinimg.com/564x/05/5f/ae/055fae9105a863cb2fb9d0cddcb7f8b6.jpg"  alt="Imagen 1">
+        <div class="rating-container" data-rating="0"></div>
+      </div>
+    
+      <div class="image-box" id="image-box-2">
+        <img src="https://i.pinimg.com/564x/df/f6/99/dff69987d0323edfb0776deba13583c3.jpg" alt="Imagen 2">
+        <div class="rating-container" data-rating="0"></div>
+      </div>
+    
+      <div class="image-box" id="image-box-3">
+        <img src="https://i.pinimg.com/564x/c9/79/c6/c979c6139c9bda3aa028141103494ba3.jpg" alt="Imagen 3">
+        <div class="rating-container" data-rating="0"></div>
+      </div>
+</div>
+<div class="fila">
+      <div class="image-box" id="image-box-4">
+        <img src="https://i.pinimg.com/564x/ad/42/31/ad4231b7a85c95cbf1abbe2d76f6d0ff.jpg" alt="Imagen 4">
+        <div class="rating-container" data-rating="0"></div>
+      </div>
+    
+      <div class="image-box" id="image-box-5">
+        <img src="https://i.pinimg.com/564x/7b/59/53/7b595383370fbce27d7d5d6df54aef3e.jpg" alt="Imagen 5">
+        <div class="rating-container" data-rating="0"></div>
+      </div>
+    
+      <div class="image-box" id="image-box-6">
+        <img src="https://i.pinimg.com/564x/40/29/4a/40294a3790f5a42f655e3ae6bb089cba.jpg" alt="Imagen 6">
+        <div class="rating-container" data-rating="0"></div>
+      </div>
+</div>    
+<div class="fila">
+    <div class="image-box" id="image-box-4">
+      <img src="https://i.pinimg.com/564x/d0/14/d1/d014d10c440409309f3430dc046b808a.jpg" alt="Imagen 7">
+      <div class="rating-container" data-rating="0"></div>
+    </div>
+  
+    <div class="image-box" id="image-box-5">
+      <img src="https://i.pinimg.com/564x/70/51/b7/7051b73def877c0714072bf8102c4ba7.jpg" alt="Imagen 8">
+      <div class="rating-container" data-rating="0"></div>
+    </div>
+  
+    <div class="image-box" id="image-box-6">
+      <img src="https://i.pinimg.com/564x/b7/a3/b4/b7a3b440cafc7531a3e3b5f81f983233.jpg" alt="Imagen 9">
+      <div class="rating-container" data-rating="0"></div>
+    </div>
+</div>    
 
     
     <footer id="Footer"><!--Este Id solo servirá para que JavaScript Ubique el elemento e inserte el código-->
         
     </footer>
-    <script src="../JavaScript/catalogo.js"></script>
     <script src="../Bootstrap/js/bootstrap.min.js"></script>
     <script src="../JavaScript/CargarNavPages.js"></script>
     <script src="../JavaScript/CargarFooterPages.js"></script>
