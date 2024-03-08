@@ -12,6 +12,15 @@
     <script src="../JavaScript/FooterPages.js"></script>
 </head>
 <style>
+body {
+    margin: 0;
+    padding: 0;
+    background-image: url('../Images/catalogoback.gif'); 
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed; 
+}
+
     .fila {
         margin: 15px;
         padding: 5px;
@@ -245,23 +254,34 @@
   <input type="text" placeholder="Add a comment..." class="comment-input">
 </div>
 
-    
-    <div class="fila">
-        <div class="card" id="card-7">
-            <img src="https://i.pinimg.com/564x/d0/14/d1/d014d10c440409309f3430dc046b808a.jpg" alt="Imagen 7">
-            <div class="rating-container" data-rating="0"></div>
-        </div>
+<div class="post-container">
+  <div class="post-header">
+      <img src="../Images/Camvi_Logo.jpeg" alt="User Avatar" class="user-avatar">
+      <span class="username">username</span>
+  </div>
+  <img src="https://i.pinimg.com/564x/70/51/b7/7051b73def877c0714072bf8102c4ba7.jpg" alt="Post Image" class="post-image">
+  <div class="post-actions">
+      <div class="like-icon" onclick="toggleLike(this)">&#x2764;</div>
+      
+      <div>Like</div>
+  </div>
+  <input type="text" placeholder="Add a comment..." class="comment-input">
+</div>
 
-        <div class="card" id="card-8">
-            <img src="https://i.pinimg.com/564x/70/51/b7/7051b73def877c0714072bf8102c4ba7.jpg" alt="Imagen 8">
-            <div class="rating-container" data-rating="0"></div>
-        </div>
+<div class="post-container">
+  <div class="post-header">
+      <img src="../Images/Camvi_Logo.jpeg" alt="User Avatar" class="user-avatar">
+      <span class="username">username</span>
+  </div>
+  <img src="https://i.pinimg.com/564x/b7/a3/b4/b7a3b440cafc7531a3e3b5f81f983233.jpg" alt="Post Image" class="post-image">
+  <div class="post-actions">
+      <div class="like-icon" onclick="toggleLike(this)">&#x2764;</div>
+      
+      <div>Like</div>
+  </div>
+  <input type="text" placeholder="Add a comment..." class="comment-input">
+</div>
 
-        <div class="card" id="card-9">
-            <img src="https://i.pinimg.com/564x/b7/a3/b4/b7a3b440cafc7531a3e3b5f81f983233.jpg" alt="Imagen 9">
-            <div class="rating-container" data-rating="0"></div>
-        </div>
-    </div>
     <script>
       function toggleLike(likeIcon) {
           likeIcon.classList.toggle('liked');
