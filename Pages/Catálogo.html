@@ -7,18 +7,289 @@
     <title>Camvi - Catálogo</title>
     <link rel="shortcut icon" href="../Images/Camvi_Logo.jpeg" type="image/x-icon">
     <link rel="stylesheet" href="../Bootstrap/css/bootstrap.min.css">
-    <link rel="stylesheet" href="../Css/Style.css  ">
+    <link rel="stylesheet" href="../Css/Style.css">
     <script src="../JavaScript/HeaderPages.js"></script>
     <script src="../JavaScript/FooterPages.js"></script>
 </head>
+<style>
+body {
+    margin: 0;
+    padding: 0;
+    background-image: url('../Images/catalogoback.gif'); 
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed; 
+}
+
+    .fila {
+        margin: 15px;
+        padding: 5px;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+    }
+
+    .rating-container {
+        display: flex;
+        justify-content: center;
+    }
+
+    .star {
+        width: 30px;
+        height: 30px;
+        background-color: transparent;
+        background-image: url('https://cdn-icons-png.flaticon.com/512/13/13595.png');
+        background-size: cover;
+        cursor: pointer;
+        margin: 0 5px;
+        transition: background-image 0.3s ease-in-out;
+    }
+    .post-container {
+            max-width: 600px;
+            margin: 20px auto;
+            background-color: #ffffff;
+            border: 1px solid #e0e0e0;
+            border-radius: 8px;
+            box-shadow: 0px 1px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .post-header {
+            padding: 15px;
+            display: flex;
+            align-items: center;
+        }
+
+        .user-avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            margin-right: 10px;
+        }
+
+        .username {
+            font-weight: bold;
+        }
+
+        .post-image {
+            width: 100%;
+            max-height: 600px;
+            object-fit: cover;
+        }
+
+        .post-actions {
+            padding: 15px;
+            display: flex;
+            align-items: center;
+        }
+
+        .like-icon {
+            margin-right: 10px;
+            cursor: pointer;
+        }
+
+        .comment-input {
+            width: 100%;
+            padding: 8px;
+            border: none;
+            border-top: 1px solid #e0e0e0;
+            margin-top: 10px;
+            outline: none;
+        }
+
+    .star:hover,
+    .star.active {
+        background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ-9ERd5iagj8f2LhTwQn9AbumVo2xhHWJvyiTShhDjQSRjBnAZY8Q0FfieqpdCfa_j6J8&usqp=CAU');
+    }
+</style>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const cards = document.querySelectorAll('.card');
+
+        cards.forEach((card) => {
+            const ratingContainer = card.querySelector('.rating-container');
+            const stars = [];
+
+            for (let i = 1; i <= 5; i++) {
+                const star = document.createElement('div');
+                star.className = 'star';
+                star.dataset.rating = i;
+                ratingContainer.appendChild(star);
+                stars.push(star);
+
+                star.addEventListener('mouseover', function () {
+                    highlightStars(Number(star.dataset.rating), stars);
+                });
+
+                star.addEventListener('mouseout', function () {
+                    resetStars(stars, card);
+                });
+
+                star.addEventListener('click', function () {
+                    setRating(Number(star.dataset.rating), card);
+                });
+            }
+        });
+
+        function highlightStars(rating, stars) {
+            stars.forEach((star, index) => {
+                if (index < rating) {
+                    star.classList.add('active');
+                } else {
+                    star.classList.remove('active');
+                }
+            });
+        }
+
+        function resetStars(stars, card) {
+            const ratingContainer = card.querySelector('.rating-container');
+            const currentRating = ratingContainer.dataset.rating;
+
+            stars.forEach((star, index) => {
+                if (index < currentRating) {
+                    star.classList.add('active');
+                } else {
+                    star.classList.remove('active');
+                }
+            });
+        }
+
+        function setRating(rating, card) {
+            const ratingContainer = card.querySelector('.rating-container');
+            ratingContainer.dataset.rating = rating;
+
+            
+            console.log(`Carta ${card.id} calificada con ${rating} estrellas`);
+            
+        }
+    });
+</script>
 
 <body>
-    <header id="Header"><!--Este Id solo servirá para que JavaScript Ubique el elemento e inserte el código-->
+    <header id="Header">
         
-
     </header>
 
-    <footer id="Footer"><!--Este Id solo servirá para que JavaScript Ubique el elemento e inserte el código-->
+    <div class="post-container">
+      <div class="post-header">
+          <img src="../Images/Camvi_Logo.jpeg" alt="User Avatar" class="user-avatar">
+          <span class="username">@CAMVI</span>
+      </div>
+      <img src="https://i.pinimg.com/564x/05/5f/ae/055fae9105a863cb2fb9d0cddcb7f8b6.jpg" alt="Post Image" class="post-image">
+      <div class="post-actions">
+          <div class="like-icon" onclick="toggleLike(this)">&#x2764;</div>
+          
+          <div>Like</div>
+      </div>
+      <input type="text" placeholder="Add a comment..." class="comment-input">
+  </div>
+
+  <div class="post-container">
+    <div class="post-header">
+        <img src="../Images/Camvi_Logo.jpeg" alt="User Avatar" class="user-avatar">
+        <span class="username">@CAMVI</span>
+    </div>
+    <img src="https://i.pinimg.com/564x/c9/79/c6/c979c6139c9bda3aa028141103494ba3.jpg" alt="Post Image" class="post-image">
+    <div class="post-actions">
+        <div class="like-icon" onclick="toggleLike(this)">&#x2764;</div>
+        
+        <div>Like</div>
+    </div>
+    <input type="text" placeholder="Add a comment..." class="comment-input">
+</div>
+
+<div class="post-container">
+  <div class="post-header">
+      <img src="../Images/Camvi_Logo.jpeg" alt="User Avatar" class="user-avatar">
+      <span class="username">@CAMVI</span>
+  </div>
+  <img src="https://i.pinimg.com/564x/ad/42/31/ad4231b7a85c95cbf1abbe2d76f6d0ff.jpg" alt="Post Image" class="post-image">
+  <div class="post-actions">
+      <div class="like-icon" onclick="toggleLike(this)">&#x2764;</div>
+      
+      <div>Like</div>
+  </div>
+  <input type="text" placeholder="Add a comment..." class="comment-input">
+</div>
+
+<div class="post-container">
+  <div class="post-header">
+      <img src="../Images/Camvi_Logo.jpeg" alt="User Avatar" class="user-avatar">
+      <span class="username">@CAMVI</span>
+  </div>
+  <img src="https://i.pinimg.com/564x/7b/59/53/7b595383370fbce27d7d5d6df54aef3e.jpg" alt="Post Image" class="post-image">
+  <div class="post-actions">
+      <div class="like-icon" onclick="toggleLike(this)">&#x2764;</div>
+      
+      <div>Like</div>
+  </div>
+  <input type="text" placeholder="Add a comment..." class="comment-input">
+</div>
+
+<div class="post-container">
+  <div class="post-header">
+      <img src="../Images/Camvi_Logo.jpeg" alt="User Avatar" class="user-avatar">
+      <span class="username">@CAMVI</span>
+  </div>
+  <img src="https://i.pinimg.com/564x/40/29/4a/40294a3790f5a42f655e3ae6bb089cba.jpg" alt="Post Image" class="post-image">
+  <div class="post-actions">
+      <div class="like-icon" onclick="toggleLike(this)">&#x2764;</div>
+      
+      <div>Like</div>
+  </div>
+  <input type="text" placeholder="Add a comment..." class="comment-input">
+</div>
+
+<div class="post-container">
+  <div class="post-header">
+      <img src="../Images/Camvi_Logo.jpeg" alt="User Avatar" class="user-avatar">
+      <span class="username">@CAMVI</span>
+  </div>
+  <img src="https://i.pinimg.com/564x/d0/14/d1/d014d10c440409309f3430dc046b808a.jpg" alt="Post Image" class="post-image">
+  <div class="post-actions">
+      <div class="like-icon" onclick="toggleLike(this)">&#x2764;</div>
+      
+      <div>Like</div>
+  </div>
+  <input type="text" placeholder="Add a comment..." class="comment-input">
+</div>
+
+<div class="post-container">
+  <div class="post-header">
+      <img src="../Images/Camvi_Logo.jpeg" alt="User Avatar" class="user-avatar">
+      <span class="username">@CAMVI</span>
+  </div>
+  <img src="https://i.pinimg.com/564x/70/51/b7/7051b73def877c0714072bf8102c4ba7.jpg" alt="Post Image" class="post-image">
+  <div class="post-actions">
+      <div class="like-icon" onclick="toggleLike(this)">&#x2764;</div>
+      
+      <div>Like</div>
+  </div>
+  <input type="text" placeholder="Add a comment..." class="comment-input">
+</div>
+
+<div class="post-container">
+  <div class="post-header">
+      <img src="../Images/Camvi_Logo.jpeg" alt="User Avatar" class="user-avatar">
+      <span class="username">@CAMVI</span>
+  </div>
+  <img src="https://i.pinimg.com/564x/b7/a3/b4/b7a3b440cafc7531a3e3b5f81f983233.jpg" alt="Post Image" class="post-image">
+  <div class="post-actions">
+      <div class="like-icon" onclick="toggleLike(this)">&#x2764;</div>
+      
+      <div>Like</div>
+  </div>
+  <input type="text" placeholder="Add a comment..." class="comment-input">
+</div>
+
+    <script>
+      function toggleLike(likeIcon) {
+          likeIcon.classList.toggle('liked');
+      }
+  </script>
+
+
+    <footer id="Footer">
         
     </footer>
     <script src="../Bootstrap/js/bootstrap.min.js"></script>
@@ -27,3 +298,6 @@
 </body>
 
 </html>
+
+
+

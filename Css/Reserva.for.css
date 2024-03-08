@@ -1,0 +1,32 @@
+body {
+    margin: 0;
+    padding: 0;
+    background-image: url('../Images/fondoform.gif'); 
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed; 
+}
+
+main {
+    background-color: rgba(255, 255, 255, 0.8); 
+    border-radius: 10px; 
+    padding: 20px;
+    width: 70%; 
+    margin: auto; 
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3); 
+}
+
+form {
+    max-width: 400px; 
+    margin: auto; 
+}
+
+
+h1, h4 {
+    text-align: center;
+}
+
+
+.form-control {
+    margin-bottom: 15px;
+}
