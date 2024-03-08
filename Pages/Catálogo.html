@@ -7,169 +7,269 @@
     <title>Camvi - Catálogo</title>
     <link rel="shortcut icon" href="../Images/Camvi_Logo.jpeg" type="image/x-icon">
     <link rel="stylesheet" href="../Bootstrap/css/bootstrap.min.css">
-    <link rel="stylesheet" href="../Css/Style.css  ">
+    <link rel="stylesheet" href="../Css/Style.css">
     <script src="../JavaScript/HeaderPages.js"></script>
     <script src="../JavaScript/FooterPages.js"></script>
 </head>
 <style>
-  .fila {
-margin: 35px;
-padding: 10px;
-display: flex;   
-flex-wrap: wrap;
-justify-content: space-between;
-}
+    .fila {
+        margin: 15px;
+        padding: 5px;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+    }
 
-.image-box {
-  text-align: center;
-  margin: 50px;
-}
+    .rating-container {
+        display: flex;
+        justify-content: center;
+    }
 
-.image-box img {
-  width: 250px;
-  height: 250px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  margin-bottom: 10px;
-}
+    .star {
+        width: 30px;
+        height: 30px;
+        background-color: transparent;
+        background-image: url('https://cdn-icons-png.flaticon.com/512/13/13595.png');
+        background-size: cover;
+        cursor: pointer;
+        margin: 0 5px;
+        transition: background-image 0.3s ease-in-out;
+    }
+    .post-container {
+            max-width: 600px;
+            margin: 20px auto;
+            background-color: #ffffff;
+            border: 1px solid #e0e0e0;
+            border-radius: 8px;
+            box-shadow: 0px 1px 5px rgba(0, 0, 0, 0.1);
+        }
 
-.rating-container {
-  display: flex;
-  justify-content: center;
-}
+        .post-header {
+            padding: 15px;
+            display: flex;
+            align-items: center;
+        }
 
-.star {
-  width: 30px;
-  height: 30px;
-  background-color: transparent;
-  background-image: url('https://cdn-icons-png.flaticon.com/512/13/13595.png'); /* Replace with your star image */
-  background-size: cover;
-  cursor: pointer;
-  margin: 0 5px;
-  transition: background-image 0.3s ease-in-out;
-}
+        .user-avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            margin-right: 10px;
+        }
 
-.star:hover,
-.star.active {
-  background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ-9ERd5iagj8f2LhTwQn9AbumVo2xhHWJvyiTShhDjQSRjBnAZY8Q0FfieqpdCfa_j6J8&usqp=CAU   '); /* Replace with your filled star image */
-}
+        .username {
+            font-weight: bold;
+        }
 
+        .post-image {
+            width: 100%;
+            max-height: 600px;
+            object-fit: cover;
+        }
+
+        .post-actions {
+            padding: 15px;
+            display: flex;
+            align-items: center;
+        }
+
+        .like-icon {
+            margin-right: 10px;
+            cursor: pointer;
+        }
+
+        .comment-input {
+            width: 100%;
+            padding: 8px;
+            border: none;
+            border-top: 1px solid #e0e0e0;
+            margin-top: 10px;
+            outline: none;
+        }
+
+    .star:hover,
+    .star.active {
+        background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ-9ERd5iagj8f2LhTwQn9AbumVo2xhHWJvyiTShhDjQSRjBnAZY8Q0FfieqpdCfa_j6J8&usqp=CAU');
+    }
 </style>
 
 <script>
     document.addEventListener('DOMContentLoaded', function () {
-  const imageBoxes = document.querySelectorAll('.image-box');
+        const cards = document.querySelectorAll('.card');
 
-  imageBoxes.forEach((box) => {
-    const ratingContainer = box.querySelector('.rating-container');
-    const stars = [];
+        cards.forEach((card) => {
+            const ratingContainer = card.querySelector('.rating-container');
+            const stars = [];
 
-    for (let i = 1; i <= 5; i++) {
-      const star = document.createElement('div');
-      star.className = 'star';
-      star.dataset.rating = i;
-      ratingContainer.appendChild(star);
-      stars.push(star);
+            for (let i = 1; i <= 5; i++) {
+                const star = document.createElement('div');
+                star.className = 'star';
+                star.dataset.rating = i;
+                ratingContainer.appendChild(star);
+                stars.push(star);
 
-      star.addEventListener('mouseover', function () {
-        highlightStars(Number(star.dataset.rating), stars);
-      });
+                star.addEventListener('mouseover', function () {
+                    highlightStars(Number(star.dataset.rating), stars);
+                });
 
-      star.addEventListener('mouseout', function () {
-        resetStars(stars);
-      });
+                star.addEventListener('mouseout', function () {
+                    resetStars(stars, card);
+                });
 
-      star.addEventListener('click', function () {
-        setRating(Number(star.dataset.rating), box);
-      });
-    }
-  });
+                star.addEventListener('click', function () {
+                    setRating(Number(star.dataset.rating), card);
+                });
+            }
+        });
 
-  function highlightStars(rating, stars) {
-    stars.forEach((star, index) => {
-      if (index < rating) {
-        star.classList.add('active');
-      } else {
-        star.classList.remove('active');
-      }
+        function highlightStars(rating, stars) {
+            stars.forEach((star, index) => {
+                if (index < rating) {
+                    star.classList.add('active');
+                } else {
+                    star.classList.remove('active');
+                }
+            });
+        }
+
+        function resetStars(stars, card) {
+            const ratingContainer = card.querySelector('.rating-container');
+            const currentRating = ratingContainer.dataset.rating;
+
+            stars.forEach((star, index) => {
+                if (index < currentRating) {
+                    star.classList.add('active');
+                } else {
+                    star.classList.remove('active');
+                }
+            });
+        }
+
+        function setRating(rating, card) {
+            const ratingContainer = card.querySelector('.rating-container');
+            ratingContainer.dataset.rating = rating;
+
+            
+            console.log(`Carta ${card.id} calificada con ${rating} estrellas`);
+            
+        }
     });
-  }
-
-  function resetStars(stars) {
-    stars.forEach((star) => {
-      star.classList.remove('active');
-    });
-  }
-
-  function setRating(rating, box) {
-    const ratingContainer = box.querySelector('.rating-container');
-    ratingContainer.dataset.rating = rating;
-
-    // Realizar la acción necesaria cuando se establece una calificación
-    console.log(`Imagen ${box.id} calificada con ${rating} estrellas`);
-    // Puedes realizar acciones adicionales aquí, como enviar la calificación al servidor.
-  }
-});
-
-    
-    
 </script>
+
 <body>
-    <header id="Header"><!--Este Id solo servirá para que JavaScript Ubique el elemento e inserte el código-->
+    <header id="Header">
         
-
     </header>
-<div class="fila">
-    <div class="image-box" id="image-box-1">
-        <img src="https://i.pinimg.com/564x/05/5f/ae/055fae9105a863cb2fb9d0cddcb7f8b6.jpg"  alt="Imagen 1">
-        <div class="rating-container" data-rating="0"></div>
+
+    <div class="post-container">
+      <div class="post-header">
+          <img src="../Images/Camvi_Logo.jpeg" alt="User Avatar" class="user-avatar">
+          <span class="username">username</span>
       </div>
-    
-      <div class="image-box" id="image-box-2">
-        <img src="https://i.pinimg.com/564x/df/f6/99/dff69987d0323edfb0776deba13583c3.jpg" alt="Imagen 2">
-        <div class="rating-container" data-rating="0"></div>
+      <img src="https://i.pinimg.com/564x/05/5f/ae/055fae9105a863cb2fb9d0cddcb7f8b6.jpg" alt="Post Image" class="post-image">
+      <div class="post-actions">
+          <div class="like-icon" onclick="toggleLike(this)">&#x2764;</div>
+          
+          <div>Like</div>
       </div>
-    
-      <div class="image-box" id="image-box-3">
-        <img src="https://i.pinimg.com/564x/c9/79/c6/c979c6139c9bda3aa028141103494ba3.jpg" alt="Imagen 3">
-        <div class="rating-container" data-rating="0"></div>
-      </div>
+      <input type="text" placeholder="Add a comment..." class="comment-input">
+  </div>
+
+  <div class="post-container">
+    <div class="post-header">
+        <img src="../Images/Camvi_Logo.jpeg" alt="User Avatar" class="user-avatar">
+        <span class="username">username</span>
+    </div>
+    <img src="https://i.pinimg.com/564x/c9/79/c6/c979c6139c9bda3aa028141103494ba3.jpg" alt="Post Image" class="post-image">
+    <div class="post-actions">
+        <div class="like-icon" onclick="toggleLike(this)">&#x2764;</div>
+        
+        <div>Like</div>
+    </div>
+    <input type="text" placeholder="Add a comment..." class="comment-input">
 </div>
-<div class="fila">
-      <div class="image-box" id="image-box-4">
-        <img src="https://i.pinimg.com/564x/ad/42/31/ad4231b7a85c95cbf1abbe2d76f6d0ff.jpg" alt="Imagen 4">
-        <div class="rating-container" data-rating="0"></div>
-      </div>
-    
-      <div class="image-box" id="image-box-5">
-        <img src="https://i.pinimg.com/564x/7b/59/53/7b595383370fbce27d7d5d6df54aef3e.jpg" alt="Imagen 5">
-        <div class="rating-container" data-rating="0"></div>
-      </div>
-    
-      <div class="image-box" id="image-box-6">
-        <img src="https://i.pinimg.com/564x/40/29/4a/40294a3790f5a42f655e3ae6bb089cba.jpg" alt="Imagen 6">
-        <div class="rating-container" data-rating="0"></div>
-      </div>
-</div>    
-<div class="fila">
-    <div class="image-box" id="image-box-4">
-      <img src="https://i.pinimg.com/564x/d0/14/d1/d014d10c440409309f3430dc046b808a.jpg" alt="Imagen 7">
-      <div class="rating-container" data-rating="0"></div>
-    </div>
-  
-    <div class="image-box" id="image-box-5">
-      <img src="https://i.pinimg.com/564x/70/51/b7/7051b73def877c0714072bf8102c4ba7.jpg" alt="Imagen 8">
-      <div class="rating-container" data-rating="0"></div>
-    </div>
-  
-    <div class="image-box" id="image-box-6">
-      <img src="https://i.pinimg.com/564x/b7/a3/b4/b7a3b440cafc7531a3e3b5f81f983233.jpg" alt="Imagen 9">
-      <div class="rating-container" data-rating="0"></div>
-    </div>
-</div>    
+
+<div class="post-container">
+  <div class="post-header">
+      <img src="../Images/Camvi_Logo.jpeg" alt="User Avatar" class="user-avatar">
+      <span class="username">username</span>
+  </div>
+  <img src="https://i.pinimg.com/564x/ad/42/31/ad4231b7a85c95cbf1abbe2d76f6d0ff.jpg" alt="Post Image" class="post-image">
+  <div class="post-actions">
+      <div class="like-icon" onclick="toggleLike(this)">&#x2764;</div>
+      
+      <div>Like</div>
+  </div>
+  <input type="text" placeholder="Add a comment..." class="comment-input">
+</div>
+
+<div class="post-container">
+  <div class="post-header">
+      <img src="../Images/Camvi_Logo.jpeg" alt="User Avatar" class="user-avatar">
+      <span class="username">username</span>
+  </div>
+  <img src="https://i.pinimg.com/564x/7b/59/53/7b595383370fbce27d7d5d6df54aef3e.jpg" alt="Post Image" class="post-image">
+  <div class="post-actions">
+      <div class="like-icon" onclick="toggleLike(this)">&#x2764;</div>
+      
+      <div>Like</div>
+  </div>
+  <input type="text" placeholder="Add a comment..." class="comment-input">
+</div>
+
+<div class="post-container">
+  <div class="post-header">
+      <img src="../Images/Camvi_Logo.jpeg" alt="User Avatar" class="user-avatar">
+      <span class="username">username</span>
+  </div>
+  <img src="https://i.pinimg.com/564x/40/29/4a/40294a3790f5a42f655e3ae6bb089cba.jpg" alt="Post Image" class="post-image">
+  <div class="post-actions">
+      <div class="like-icon" onclick="toggleLike(this)">&#x2764;</div>
+      
+      <div>Like</div>
+  </div>
+  <input type="text" placeholder="Add a comment..." class="comment-input">
+</div>
+
+<div class="post-container">
+  <div class="post-header">
+      <img src="../Images/Camvi_Logo.jpeg" alt="User Avatar" class="user-avatar">
+      <span class="username">username</span>
+  </div>
+  <img src="https://i.pinimg.com/564x/d0/14/d1/d014d10c440409309f3430dc046b808a.jpg" alt="Post Image" class="post-image">
+  <div class="post-actions">
+      <div class="like-icon" onclick="toggleLike(this)">&#x2764;</div>
+      
+      <div>Like</div>
+  </div>
+  <input type="text" placeholder="Add a comment..." class="comment-input">
+</div>
 
     
-    <footer id="Footer"><!--Este Id solo servirá para que JavaScript Ubique el elemento e inserte el código-->
+    <div class="fila">
+        <div class="card" id="card-7">
+            <img src="https://i.pinimg.com/564x/d0/14/d1/d014d10c440409309f3430dc046b808a.jpg" alt="Imagen 7">
+            <div class="rating-container" data-rating="0"></div>
+        </div>
+
+        <div class="card" id="card-8">
+            <img src="https://i.pinimg.com/564x/70/51/b7/7051b73def877c0714072bf8102c4ba7.jpg" alt="Imagen 8">
+            <div class="rating-container" data-rating="0"></div>
+        </div>
+
+        <div class="card" id="card-9">
+            <img src="https://i.pinimg.com/564x/b7/a3/b4/b7a3b440cafc7531a3e3b5f81f983233.jpg" alt="Imagen 9">
+            <div class="rating-container" data-rating="0"></div>
+        </div>
+    </div>
+    <script>
+      function toggleLike(likeIcon) {
+          likeIcon.classList.toggle('liked');
+      }
+  </script>
+
+
+    <footer id="Footer">
         
     </footer>
     <script src="../Bootstrap/js/bootstrap.min.js"></script>
@@ -178,3 +278,6 @@ justify-content: space-between;
 </body>
 
 </html>
+
+
+
