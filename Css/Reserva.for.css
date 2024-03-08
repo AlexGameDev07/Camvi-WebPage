@@ -1,32 +1,32 @@
 body {
     margin: 0;
     padding: 0;
-    background-image: url('../Images/fondoform.gif'); /* Ruta de la imagen de fondo */
+    background-image: url('../Images/fondoform.gif'); 
     background-size: cover;
     background-position: center;
-    background-attachment: fixed; /* La imagen de fondo no se desplaza al hacer scroll */
+    background-attachment: fixed; 
 }
 
 main {
-    background-color: rgba(255, 255, 255, 0.8); /* Opacidad del fondo del formulario */
-    border-radius: 10px; /* Bordes redondeados */
+    background-color: rgba(255, 255, 255, 0.8); 
+    border-radius: 10px; 
     padding: 20px;
-    width: 70%; /* Ancho del formulario */
-    margin: auto; /* Centrar el formulario */
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3); /* Sombra */
+    width: 70%; 
+    margin: auto; 
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3); 
 }
 
 form {
-    max-width: 400px; /* Ancho máximo del formulario */
-    margin: auto; /* Centrar el formulario dentro del contenedor principal */
+    max-width: 400px; 
+    margin: auto; 
 }
 
-/* Estilos adicionales según sea necesario */
+
 h1, h4 {
     text-align: center;
 }
 
-/* Puedes agregar estilos personalizados para los elementos del formulario según tus necesidades */
+
 .form-control {
     margin-bottom: 15px;
 }
